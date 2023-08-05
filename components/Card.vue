@@ -1,7 +1,13 @@
 <script setup lang="ts">
-const props = defineProps<{
-  link?: string
-}>()
+interface Props {
+  name: string
+  desc: string
+  link: string
+  path: string
+  gif: boolean
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>
@@ -10,27 +16,28 @@ const props = defineProps<{
       :href="props.link || '/panorama'"
       border="~ base rounded-lg"
       class="group"
-      hover="scale-101 shadow-xl z-10" bg-base relative block of-hidden transition-all duration-500
+      hover="scale-101 shadow-xl z-10" relative block of-hidden transition-all duration-500 bg-base
     >
-      <video
-        src="https://antfu.me/assets/2023-06-23-7430df9f.mp4"
-        autoplay loop muted playsinline
-        w-full border="b base"
-      />
+      <template v-if="gif">
+        <img :src="path" alt="panorama" w-full border="b base">
+      </template>
+      <template v-else>
+        <video
+          src="https://antfu.me/assets/2023-06-23-7430df9f.mp4"
+          autoplay loop muted playsinline
+          w-full border="b base"
+        />
+      </template>
       <div class="prose-sm m0 p4 pb3 prose">
         <div class="slide-enter-content m-auto prose">
-          <p>The upcoming Picture-in-Picture API that Chrome is pushing is soo promising! 🤩</p>
+          <p>{{ name }}</p>
           <p>
-            <a href="https://github.com/nuxt/devtools" target="_blank" rel="noopener noreferrer">
-              <span i-logos-nuxt-icon />
-              Nuxt DevTools
-            </a>
-            is now able to pop up as a separate window!
+            {{ desc }}
           </p>
         </div>
-        <div pt2 text-sm op50>
+        <!-- <div pt2 text-sm op50>
           June 23
-        </div>
+        </div> -->
       </div>
     </NuxtLink>
   </div>

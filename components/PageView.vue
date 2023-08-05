@@ -5,11 +5,31 @@ import { breakpointsTailwind } from '@vueuse/core'
 // refs: https://stackoverflow.com/questions/73025338/i-cant-use-dynamic-components-in-nuxt-3
 const Card = resolveComponent('Card')
 
-const demoItems = Array.from({ length: 3 }).map((_, i) => ({
-  comp: Card,
-  name: `card-${i}`,
-  link: Math.random() >= 0.5 ? '/panorama' : '/periodictable',
-}))
+// const demoItems = Array.from({ length: 3 }).map((_, i) => ({
+//   comp: Card,
+//   name: `card-${i}`,
+//   link: Math.random() >= 0.5 ? '/panorama' : '/periodictable',
+//   gif: Math.random() >= 0.5,
+// }))
+
+const demoItems = [
+  {
+    comp: Card,
+    name: 'Panorama',
+    desc: '𐚔 360° 全景图',
+    link: '/panorama',
+    path: '/gif/panorama.gif',
+    gif: true,
+  },
+  {
+    comp: Card,
+    name: 'Periodictable',
+    desc: ' 元素周期表',
+    link: '/periodictable',
+    path: '/gif/periodictable.gif',
+    gif: true,
+  },
+]
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
 
@@ -34,11 +54,15 @@ const parts = computed(() => {
   <div grid="~ cols-1 lg:cols-2 xl:cols-3 gap-4">
     <div v-for="items, idx of parts" :key="idx" flex="~ col gap-4">
       <component
-        :is="comp"
-        v-for="{ comp, name, link } of items"
-        :key="name"
+        :is="item.comp"
+        v-for="item of items"
+        :key="item.name"
         class="slide-enter"
-        :link="link"
+        :name="item.name"
+        :desc="item.desc"
+        :link="item.link"
+        :path="item.path"
+        :gif="item.gif"
         :style="{
           '--enter-stage': idx + 1,
         }"

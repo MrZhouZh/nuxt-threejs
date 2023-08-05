@@ -5,9 +5,10 @@ import { breakpointsTailwind } from '@vueuse/core'
 // refs: https://stackoverflow.com/questions/73025338/i-cant-use-dynamic-components-in-nuxt-3
 const Card = resolveComponent('Card')
 
-const demoItems = Array.from({ length: 6 }).map((_, i) => ({
+const demoItems = Array.from({ length: 3 }).map((_, i) => ({
   comp: Card,
   name: `card-${i}`,
+  link: Math.random() >= 0.5 ? '/panorama' : '/periodictable',
 }))
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
@@ -34,9 +35,10 @@ const parts = computed(() => {
     <div v-for="items, idx of parts" :key="idx" flex="~ col gap-4">
       <component
         :is="comp"
-        v-for="{ comp, name } of items"
+        v-for="{ comp, name, link } of items"
         :key="name"
         class="slide-enter"
+        :link="link"
         :style="{
           '--enter-stage': idx + 1,
         }"

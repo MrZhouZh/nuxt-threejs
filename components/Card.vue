@@ -1,10 +1,13 @@
 <script setup lang="ts">
-//
+const props = defineProps<{
+  link?: string
+}>()
 </script>
 
 <template>
   <div class="card-wrapper">
-    <div
+    <NuxtLink
+      :href="props.link || '/panorama'"
       border="~ base rounded-lg"
       class="group"
       hover="scale-101 shadow-xl z-10" bg-base relative block of-hidden transition-all duration-500
@@ -29,6 +32,6 @@
           June 23
         </div>
       </div>
-    </div>
+    </NuxtLink>
   </div>
 </template>

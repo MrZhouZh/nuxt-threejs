@@ -314,8 +314,8 @@
   line-height: 1.7142857;
 }
 .prose-sm p {
-  margin-top: 1.1428571em;
-  margin-bottom: 1.1428571em;
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
 }
 .prose-sm [class~="lead"] {
   font-size: 1.2857143em;

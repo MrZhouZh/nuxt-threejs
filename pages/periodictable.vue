@@ -26,7 +26,7 @@ interface Targets {
   grid: Object3D[]
 }
 
-const defaultTarget: keyof Targets = 'helix'
+const defaultTarget: keyof Targets = 'table'
 
 const targets: Targets = { table: [], sphere: [], helix: [], grid: [] }
 

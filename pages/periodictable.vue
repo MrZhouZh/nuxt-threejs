@@ -3,7 +3,7 @@ import { Object3D, PerspectiveCamera, Scene, Vector3 } from 'three'
 import TWEEN from 'three/examples/jsm/libs/tween.module'
 import { CSS3DObject, CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer'
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls'
-import { table } from '~/composables/periodict-store'
+import { table } from '~/constants'
 
 definePageMeta({
   layout: 'webgl',
@@ -376,14 +376,6 @@ onUnmounted(() => {
   :root {
     color: #213547;
     background-color: #ffffff;
-  }
-
-  a:hover {
-    color: #747bff;
-  }
-
-  button {
-    background-color: #f9f9f9;
   }
 }
 </style>

@@ -35,7 +35,7 @@ export type AutoSkeletonViewResult<D, P extends any[]> = UnwrapRef<{
   }
 }>
 
-export function UseAutoSkeletonView<D, P extends any[] = any[]>(
+export function useAutoSkeletonView<D, P extends any[] = any[]>(
   props: UseAutoSkeletonViewProps<D, P>,
 ): AutoSkeletonViewResult<D, P> {
   const {

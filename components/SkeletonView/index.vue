@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup name="SkeletonView" lang="ts">
 type ViewStatus =
   | 'loading'
   | 'error'
